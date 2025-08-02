@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CreditCard, MapPin, Phone, Mail, Clock, Shield } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
@@ -24,6 +24,11 @@ const Checkout = ({ navigateTo }) => {
     cvv: '',
     cardholderName: ''
   })
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const tax = getCartTotal() * 0.1
   const deliveryFee = orderType === 'delivery' ? 3.99 : 0

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Plus, Minus, Star, Clock, Award } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
@@ -9,6 +9,11 @@ const OrderPage = ({ item, navigateTo }) => {
   const [selectedExtras, setSelectedExtras] = useState([])
   const [specialInstructions, setSpecialInstructions] = useState('')
   const { addToCart } = useCart()
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (!item) {
     return (

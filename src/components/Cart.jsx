@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react'
 import { useCart } from '../context/CartContext'
 
 const Cart = ({ navigateTo }) => {
   const { items, removeFromCart, updateQuantity, getCartTotal, clearCart } = useCart()
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (items.length === 0) {
     return (

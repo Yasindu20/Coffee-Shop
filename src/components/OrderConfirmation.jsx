@@ -6,7 +6,10 @@ const OrderConfirmation = ({ navigateTo }) => {
   const [estimatedTime] = useState(() => Math.floor(Math.random() * 10) + 10)
   const [showConfetti, setShowConfetti] = useState(true)
 
+  // Scroll to top when component mounts
   useEffect(() => {
+    window.scrollTo(0, 0)
+    
     // Hide confetti after animation
     const timer = setTimeout(() => setShowConfetti(false), 3000)
     return () => clearTimeout(timer)

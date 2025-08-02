@@ -20,6 +20,13 @@ function App() {
   const navigateTo = (page, item = null) => {
     setCurrentPage(page)
     if (item) setSelectedItem(item)
+    
+    // Scroll to top when navigating
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }
 
   const renderPage = () => {
