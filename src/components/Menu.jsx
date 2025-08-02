@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { menuData } from '../data/menuData'
 
-const Menu = () => {
+const Menu = ({ navigateTo }) => {
   const [activeCategory, setActiveCategory] = useState('coffee')
 
   const categories = [
@@ -9,6 +9,15 @@ const Menu = () => {
     { id: 'pastries', label: 'Pastries & Sweets' },
     { id: 'lunch', label: 'Lunch Items' }
   ]
+
+  const handleOrderNow = (item) => {
+    const itemWithId = {
+      ...item,
+      id: `${activeCategory}_${menuData[activeCategory].indexOf(item)}`,
+      category: activeCategory
+    }
+    navigateTo('order', itemWithId)
+  }
 
   return (
     <section id="menu" style={{ padding: '5rem 0', background: 'white' }}>
@@ -103,6 +112,7 @@ const Menu = () => {
                   {item.description}
                 </p>
                 <button
+                  onClick={() => handleOrderNow(item)}
                   style={{
                     background: 'linear-gradient(135deg, #8B4513, #A0522D)',
                     color: 'white',
