@@ -10,6 +10,21 @@ const Cart = ({ navigateTo }) => {
     window.scrollTo(0, 0)
   }, [])
 
+  // Function to handle Continue Shopping - navigate to menu section
+  const handleContinueShopping = () => {
+    navigateTo('home')
+    // Add a delay to ensure the home page has loaded, then scroll to menu
+    setTimeout(() => {
+      const menuSection = document.querySelector('#menu')
+      if (menuSection) {
+        menuSection.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start' 
+        })
+      }
+    }, 100)
+  }
+
   if (items.length === 0) {
     return (
       <div style={{
@@ -44,7 +59,7 @@ const Cart = ({ navigateTo }) => {
             Explore our premium menu and discover your perfect coffee experience.
           </p>
           <button
-            onClick={() => navigateTo('home')}
+            onClick={handleContinueShopping}
             className="btn"
             style={{ fontSize: '1.1rem' }}
           >
@@ -302,7 +317,7 @@ const Cart = ({ navigateTo }) => {
             gap: '1rem'
           }} className="cart-actions">
             <button
-              onClick={() => navigateTo('home')}
+              onClick={handleContinueShopping}
               style={{
                 flex: 1,
                 background: 'none',
